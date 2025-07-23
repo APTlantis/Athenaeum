@@ -1,0 +1,76 @@
+{
+  "links": [
+    {
+      "title": "How I Disabled HP RST",
+      "url": "/path/to/how-i-disabled-hp-rst",
+      "description": "On HP Laptops RST is HARDWARE not in BIOS settings. This is how I disabled it."
+    },
+    {
+      "title": "DistroWatch",
+      "url": "https://distrowatch.com/",
+      "description": "News, popularity rankings, and information about Linux distributions."
+    },
+    {
+      "title": "Linux Journey",
+      "url": "https://linuxjourney.com/",
+      "description": "Learn the ways of Linux-fu, from beginner to system administrator."
+    },
+    {
+      "title": "It's FOSS",
+      "url": "https://itsfoss.com/",
+      "description": "Latest Linux news, apps, software updates, and tutorials."
+    },
+    {
+      "title": "Linux Command Library",
+      "url": "https://linuxcommandlibrary.com/",
+      "description": "A searchable database of Linux commands with examples and explanations."
+    },
+    {
+      "title": "Arch Wiki",
+      "url": "https://wiki.archlinux.org/",
+      "description": "Extensive documentation for Arch Linux and many other distributions."
+    }
+  ],
+  "tips": [
+    {
+      "title": "Verify Your Downloads",
+      "content": "Always verify the integrity of downloaded ISO files using checksums (MD5, SHA256) before installation to ensure they haven't been tampered with.",
+      "category": "Security"
+    },
+    {
+      "title": "Use Timeshift for Backups",
+      "content": "Timeshift is a powerful backup tool available on many Linux distributions. Create system snapshots before major updates or changes.",
+      "category": "Backup"
+    },
+    {
+      "title": "Try Before You Install",
+      "content": "Most Linux distributions offer a 'live' mode that lets you try the OS without installing. Boot from USB and test compatibility with your hardware.",
+      "category": "Installation"
+    },
+    {
+      "title": "Keep Your System Updated",
+      "content": "Regular updates improve security and stability. Use your distribution's package manager to keep your system up to date.",
+      "category": "Maintenance"
+    },
+    {
+      "title": "Learn Basic Terminal Commands",
+      "content": "Familiarize yourself with basic commands like ls, cd, mkdir, and apt/dnf/pacman. The terminal is powerful and often faster than GUI tools.",
+      "category": "Skills"
+    },
+    {
+      "title": "Check Hardware Compatibility",
+      "content": "Before choosing a distribution, check hardware compatibility, especially for Wi-Fi cards, graphics cards, and peripherals.",
+      "category": "Hardware"
+    },
+    {
+      "title": "Use Local Mirrors",
+      "content": "Configure your package manager to use mirrors geographically close to you for faster downloads and updates.",
+      "category": "Performance"
+    },
+    {
+      "title": "Customize Your Desktop",
+      "content": "Linux offers extensive customization options. Explore different desktop environments (GNOME, KDE, XFCE) to find what works best for you.",
+      "category": "Customization"
+    }
+  ]
+}

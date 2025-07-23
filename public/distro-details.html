@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribution Details - APTlantis</title>
+  <style>
+    :root {
+      --bg-gradient-from: #1a1a1a;
+      --bg-gradient-to: #0a0a0a;
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --text-tertiary: #999999;
+      --accent-cyan: #06b6d4;
+      --accent-cyan-light: rgba(6, 182, 212, 0.3);
+      --accent-green: #10b981;
+      --accent-blue: #3b82f6;
+      --bg-card: #0a0a0a;
+      --border-color: rgba(6, 182, 212, 0.3);
+      --nav-bg: #0a0a0a;
+      --nav-text: #ffffff;
+      --nav-hover: #06b6d4;
+      --breadcrumb-bg: rgba(10, 10, 10, 0.8);
+      --breadcrumb-text: #cccccc;
+      --breadcrumb-active: #06b6d4;
+      --footer-bg: #0a0a0a;
+      --footer-text: #cccccc;
+      --footer-link: #06b6d4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(to bottom right, var(--bg-gradient-from), var(--bg-gradient-to));
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 20px;
+      object-fit: contain;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 5px;
+    }
+
+    .title-container {
+      flex: 1;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      color: var(--accent-cyan);
+      font-size: 16px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    @media (min-width: 768px) {
+      .content {
+        flex-direction: row;
+      }
+    }
+
+    .sidebar {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .main {
+      flex: 2;
+    }
+
+    .section {
+      background-color: var(--bg-card);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .section-title {
+      color: var(--accent-cyan);
+      font-size: 20px;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .button-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .button-primary {
+      background-color: var(--accent-cyan);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background-color: #0891b2;
+    }
+
+    .button-secondary {
+      background-color: var(--accent-green);
+      color: white;
+    }
+
+    .button-secondary:hover {
+      background-color: #059669;
+    }
+
+    .button-info {
+      background-color: var(--accent-blue);
+      color: white;
+    }
+
+    .button-info:hover {
+      background-color: #2563eb;
+    }
+
+    .file-picker-container {
+      display: flex;
+      margin-top: 5px;
+      gap: 5px;
+    }
+
+    .file-picker-input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+      background-color: rgba(0, 0, 0, 0.3);
+      color: var(--text-primary);
+    }
+
+    .file-picker-button {
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: none;
+      background-color: var(--accent-cyan);
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .file-picker-button:hover {
+      background-color: #0891b2;
+    }
+
+    .mirror-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text-secondary);
+    }
+
+    .code-block {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 6px;
+      padding: 12px;
+      font-family: monospace;
+      overflow-x: auto;
+      color: #10b981;
+      margin-top: 10px;
+      white-space: nowrap;
+    }
+
+    .copy-button {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 4px;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      padding: 5px 10px;
+      font-size: 12px;
+      margin-top: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .copy-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: var(--text-primary);
+    }
+
+    .iso-list {
+      list-style: none;
+    }
+
+    .iso-item {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .iso-name {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .iso-size {
+      color: var(--accent-cyan);
+      font-size: 14px;
+    }
+
+    .iso-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+    }
+
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border-top: 3px solid var(--accent-cyan);
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .error {
+      color: #ef4444;
+      padding: 15px;
+      background-color: rgba(239, 68, 68, 0.1);
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .museum-badge {
+      background-color: #9333ea;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-left: 10px;
+      display: inline-flex;
+      align-items: center;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+
+    .video-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .video-item {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+      padding: 15px;
+      border: 1px solid var(--border-color);
+    }
+
+    .video-item a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      display: block;
+      word-break: break-all;
+    }
+
+    .video-item a:hover {
+      text-decoration: underline;
+    }
+
+    .posts-list {
+      list-style: none;
+      margin-top: 15px;
+    }
+
+    .post-item {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .post-item a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      display: block;
+      word-break: break-all;
+    }
+
+    .post-item a:hover {
+      text-decoration: underline;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      padding: 12px 20px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      border-left: 4px solid var(--accent-cyan);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Site Header and Navigation Styles */
+    .site-header {
+      background-color: var(--nav-bg);
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--nav-text);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .nav-logo {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 20px;
+    }
+
+    .main-nav a {
+      color: var(--nav-text);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .main-nav a:hover {
+      color: var(--nav-hover);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Breadcrumbs Styles */
+    .breadcrumbs {
+      background-color: var(--breadcrumb-bg);
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .breadcrumbs ul {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      list-style: none;
+      padding: 0;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .breadcrumbs li:not(:last-child)::after {
+      content: "›";
+      margin-left: 10px;
+      color: var(--text-tertiary);
+    }
+
+    .breadcrumbs a {
+      color: var(--breadcrumb-text);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .breadcrumbs a:hover {
+      color: var(--breadcrumb-active);
+    }
+
+    .breadcrumbs li:last-child {
+      color: var(--breadcrumb-active);
+      font-weight: 500;
+    }
+
+    /* Footer Styles */
+    .site-footer {
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 30px 20px;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-section h3 {
+      color: var(--accent-cyan);
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section a {
+      color: var(--footer-text);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--footer-link);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 20px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .breadcrumbs ul {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="home-link">
+        <img src="assets/images/icon.svg" alt="APTlantis Logo" class="nav-logo">
+        <span>APTlantis</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="docs/readme.md" download>About</a></li>
+          <li><a href="docs/faq.md" download>FAQ</a></li>
+          <li><a href="docs/rsync-instructions.md" download>Rsync Guide</a></li>
+          <li><a href="docs/what-are-launchpacks.md" download>Launchpacks</a></li>
+          <li><a href="museum.html">Museum</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#distros">Distributions</a></li>
+      <li id="breadcrumb-distro">Current Distribution</li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div id="header" class="header">
+      <img id="logo" src="/placeholder.svg" alt="Distribution logo" class="logo">
+      <div class="title-container">
+        <h1 id="title" class="title">Loading...</h1>
+        <div id="subtitle-container" style="display: flex; align-items: center;">
+          <div id="subtitle" class="subtitle"></div>
+          <div id="museum-badge" class="museum-badge" style="display: none;">Museum</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="sidebar">
+        <div class="section">
+          <h2 class="section-title">About</h2>
+          <p id="description" class="description">Loading...</p>
+          <p id="about-text" class="about-text" style="margin-top: 15px;"></p>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Mirror Information</h2>
+          <p>Our mirrors are updated regularly to ensure you have access to the latest packages and security updates. Use the rsync command below to create a local mirror.</p>
+
+          <div class="code-block" id="rsync-command">Loading...</div>
+          <button class="copy-button" onclick="copyRsyncCommand()">Copy Command</button>
+
+          <div style="margin-top: 15px;">
+            <label for="mirror-directory" class="mirror-label">Local Mirror Directory:</label>
+            <div class="file-picker-container">
+              <input type="text" id="mirror-directory" class="file-picker-input" placeholder="Enter local directory path" />
+              <button class="file-picker-button" onclick="browseDirectory()">Browse</button>
+            </div>
+            <button class="copy-button" style="margin-top: 10px;" onclick="copyFullRsyncCommand()">Copy Full Command</button>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Quick Links</h2>
+          <div id="quick-links-container" class="button-container">
+            <!-- Quick links will be populated dynamically -->
+            <div class="loading">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <!-- Museum-specific sections (hidden by default) -->
+        <div id="historical-context-section" class="section" style="display: none;">
+          <h2 class="section-title">Historical Context</h2>
+          <p id="historical-context"></p>
+        </div>
+
+        <div id="videos-section" class="section" style="display: none;">
+          <h2 class="section-title">Videos</h2>
+          <div id="videos-container" class="video-container"></div>
+        </div>
+
+        <div id="historical-posts-section" class="section" style="display: none;">
+          <h2 class="section-title">Historical Posts & Articles</h2>
+          <ul id="posts-list" class="posts-list"></ul>
+        </div>
+
+        <div class="section" style="height: 100%;">
+          <h2 class="section-title">Available ISO Files</h2>
+          <div id="iso-container">
+            <div class="loading">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Command copied to clipboard!</div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About APTlantis</h3>
+        <p>APTlantis provides lightning-fast access to Linux repos, ISO downloads, and open-source archives. Our mission is to support the global FOSS community with reliable, high-speed mirrors.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="docs/readme.md" download>About</a></li>
+          <li><a href="docs/faq.md" download>FAQ</a></li>
+          <li><a href="docs/rsync-instructions.md" download>Rsync Guide</a></li>
+          <li><a href="docs/what-are-launchpacks.md" download>Launchpacks</a></li>
+          <li><a href="museum.html">Museum</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Popular Distros</h3>
+        <ul>
+          <li><a href="index.html#debian">Debian</a></li>
+          <li><a href="index.html#ubuntu">Ubuntu</a></li>
+          <li><a href="index.html#linuxmint">Linux Mint</a></li>
+          <li><a href="index.html#almalinux">AlmaLinux</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Have questions or need help?</p>
+        <p>Email: <a href="mailto:support@aptlantis.net">support@aptlantis.net</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 APTlantis. All rights reserved.</p>
+      <p>Powered by <a href="https://www.hetzner.com" target="_blank" rel="noopener">Hetzner</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Parse distro data from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedData = urlParams.get('data');
+    let distro;
+
+    try {
+      if (encodedData) {
+        const jsonData = atob(decodeURIComponent(encodedData));
+        distro = JSON.parse(jsonData);
+
+        // Update the UI with distro data
+        document.title = `${distro.title} - APTlantis`;
+        document.getElementById('logo').src = distro.logoSrc || '/placeholder.svg';
+        document.getElementById('logo').alt = `${distro.title} logo`;
+        document.getElementById('title').textContent = distro.title;
+
+        // Update breadcrumb with distro name
+        document.getElementById('breadcrumb-distro').textContent = distro.title;
+
+        if (distro.releaseYear && distro.releaseYear > 0) {
+          document.getElementById('subtitle').textContent = `Est. ${distro.releaseYear}`;
+        }
+
+        // These elements will be created dynamically in loadQuickLinks function
+        // Removed direct access to prevent JavaScript errors
+
+        document.getElementById('rsync-command').textContent = distro.rsyncCommand;
+        document.getElementById('description').textContent = distro.description;
+
+        if (distro.aboutText) {
+          document.getElementById('about-text').textContent = distro.aboutText;
+        } else {
+          document.getElementById('about-text').textContent = `${distro.title} is a Linux distribution that provides a complete operating system with its own package management system. For more information, visit the official website.`;
+        }
+
+        // Handle museum-specific content
+        if (distro.isMuseum) {
+          // Show museum badge
+          const museumBadge = document.getElementById('museum-badge');
+          museumBadge.style.display = 'inline-flex';
+
+          // Update subtitle to show both release year and discontinuation year if available
+          if (distro.releaseYear && distro.yearDiscontinued) {
+            document.getElementById('subtitle').textContent = `${distro.releaseYear} - ${distro.yearDiscontinued}`;
+          }
+
+          // Show historical context section if available
+          if (distro.historicalContext) {
+            const historicalContextSection = document.getElementById('historical-context-section');
+            const historicalContextElement = document.getElementById('historical-context');
+            historicalContextElement.textContent = distro.historicalContext;
+            historicalContextSection.style.display = 'block';
+          }
+
+          // Show videos section if available
+          if (distro.videos && distro.videos.length > 0) {
+            const videosSection = document.getElementById('videos-section');
+            const videosContainer = document.getElementById('videos-container');
+
+            // Clear any existing content
+            videosContainer.innerHTML = '';
+
+            // Add each video
+            distro.videos.forEach(videoUrl => {
+              const videoItem = document.createElement('div');
+              videoItem.className = 'video-item';
+
+              const videoLink = document.createElement('a');
+              videoLink.href = videoUrl;
+              videoLink.target = '_blank';
+              videoLink.textContent = videoUrl;
+
+              videoItem.appendChild(videoLink);
+              videosContainer.appendChild(videoItem);
+            });
+
+            videosSection.style.display = 'block';
+          }
+
+          // Show historical posts section if available
+          if (distro.historicalPosts && distro.historicalPosts.length > 0) {
+            const postsSection = document.getElementById('historical-posts-section');
+            const postsList = document.getElementById('posts-list');
+
+            // Clear any existing content
+            postsList.innerHTML = '';
+
+            // Add each post
+            distro.historicalPosts.forEach(postUrl => {
+              const postItem = document.createElement('li');
+              postItem.className = 'post-item';
+
+              const postLink = document.createElement('a');
+              postLink.href = postUrl;
+              postLink.target = '_blank';
+              postLink.textContent = postUrl;
+
+              postItem.appendChild(postLink);
+              postsList.appendChild(postItem);
+            });
+
+            postsSection.style.display = 'block';
+          }
+        }
+      } else {
+        throw new Error('No distro data provided');
+      }
+    } catch (error) {
+      console.error('Error parsing distro data:', error);
+      document.getElementById('title').textContent = 'Error';
+      document.getElementById('description').innerHTML = `<div class="error">Failed to load distribution information. Please try again.</div>`;
+    }
+
+    // Function to copy rsync command
+    function copyRsyncCommand() {
+      if (distro && distro.rsyncCommand) {
+        navigator.clipboard.writeText(distro.rsyncCommand)
+          .then(() => {
+            const toast = document.getElementById('toast');
+            toast.textContent = `${distro.title} rsync command copied to clipboard!`;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+              toast.classList.remove('show');
+            }, 3000);
+          })
+          .catch(err => {
+            console.error('Failed to copy text: ', err);
+          });
+      }
+    }
+
+    // Fetch ISO data
+    async function fetchIsoData() {
+      if (!distro || !distro.id) return;
+
+      const isoContainer = document.getElementById('iso-container');
+
+      try {
+        const response = await fetch('/data/isos_info.json');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch ISO data: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const isoFiles = getDistroIsos(data, distro.id);
+
+        if (isoFiles.length > 0) {
+          const isoList = document.createElement('ul');
+          isoList.className = 'iso-list';
+
+          isoFiles.forEach(file => {
+            const li = document.createElement('li');
+            li.className = 'iso-item';
+
+            const filename = getFilenameFromPath(file.path);
+
+            li.innerHTML = `
+              <div class="iso-name">${filename}</div>
+              <div class="iso-size">${file.size}</div>
+              <div class="iso-buttons">
+                <a href="${getDirectDownloadUrl(file.path)}" target="_blank" class="button button-secondary">Direct Download</a>
+                <a href="${getTorrentDownloadUrl(file.path)}" target="_blank" class="button button-primary">Download Torrent</a>
+              </div>
+            `;
+
+            isoList.appendChild(li);
+          });
+
+          isoContainer.innerHTML = '';
+          isoContainer.appendChild(isoList);
+        } else {
+          isoContainer.innerHTML = '<p>No ISO files found for this distribution.</p>';
+        }
+      } catch (error) {
+        console.error('Error fetching ISO data:', error);
+        isoContainer.innerHTML = `<div class="error">Failed to load ISO information. Please try again.</div>`;
+      }
+    }
+
+    // Load quick links from JSON
+    async function loadQuickLinks() {
+      const quickLinksContainer = document.getElementById('quick-links-container');
+
+      try {
+        const response = await fetch('/data/quickLinks.json');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch quick links data: ${response.status} ${response.statusText}`);
+        }
+
+        const quickLinksData = await response.json();
+
+        // Clear loading spinner
+        quickLinksContainer.innerHTML = '';
+
+        // Create buttons for each quick link
+        quickLinksData.forEach(link => {
+          const linkUrl = link.id === 'website' ? distro.websiteUrl : 
+                         link.id === 'iso' ? distro.isoUrl : 
+                         link.id === 'documentation' ? (distro.documentationUrl || `https://docs.linux.org/${distro.id}`) : 
+                         link.url;
+
+          if (link.id === 'iso' && !distro.isoUrl) {
+            return; // Skip ISO link if not available
+          }
+
+          const linkElement = document.createElement('a');
+          linkElement.href = linkUrl;
+          linkElement.target = '_blank';
+          linkElement.className = `button ${link.buttonClass || 'button-primary'}`;
+          linkElement.textContent = link.label;
+
+          quickLinksContainer.appendChild(linkElement);
+        });
+
+        // Ensure buttons are evenly spaced
+        const buttonCount = quickLinksContainer.children.length;
+        if (buttonCount > 0) {
+          quickLinksContainer.style.justifyContent = 'space-between';
+        }
+      } catch (error) {
+        console.error('Error loading quick links:', error);
+
+        // Fallback to default links if JSON fails to load
+        quickLinksContainer.innerHTML = `
+          <a id="website-link" href="${distro.websiteUrl}" target="_blank" class="button button-primary">
+            Visit Website
+          </a>
+          ${distro.isoUrl ? `
+          <a id="iso-link" href="${distro.isoUrl}" target="_blank" class="button button-secondary">
+            ISO Directory
+          </a>
+          ` : ''}
+          <a id="docs-link" href="https://docs.linux.org/${distro.id}" target="_blank" class="button button-info">
+            Documentation
+          </a>
+        `;
+
+        // Ensure buttons are evenly spaced
+        quickLinksContainer.style.justifyContent = 'space-between';
+      }
+    }
+
+    // Function to simulate browsing for a directory
+    function browseDirectory() {
+      // In a real implementation, this would open a file picker dialog
+      // Since we can't do that in a static HTML page, we'll just show a message
+      alert("In a real implementation, this would open a file picker dialog. For now, please enter the path manually.");
+    }
+
+    // Function to copy the full rsync command with the selected directory
+    function copyFullRsyncCommand() {
+      const directory = document.getElementById('mirror-directory').value.trim();
+      if (!directory) {
+        alert("Please enter a directory path first.");
+        return;
+      }
+
+      if (distro && distro.rsyncCommand) {
+        // Create the full command with the directory
+        const fullCommand = `mkdir -p ${directory} && ${distro.rsyncCommand} ${directory}`;
+
+        navigator.clipboard.writeText(fullCommand)
+          .then(() => {
+            const toast = document.getElementById('toast');
+            toast.textContent = `Full rsync command with directory copied to clipboard!`;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+              toast.classList.remove('show');
+            }, 3000);
+          })
+          .catch(err => {
+            console.error('Failed to copy text: ', err);
+          });
+      }
+    }
+
+    // Helper functions for ISO data
+    function getDistroIsos(isoData, distroId) {
+      if (!isoData || !isoData.files) {
+        return [];
+      }
+
+      // Filter files by distribution name in the path
+      return isoData.files.filter(file => {
+        const path = file.path.toLowerCase();
+        return path.startsWith(distroId.toLowerCase() + '/') && 
+              (path.endsWith('.iso') || path.endsWith('.img'));
+      });
+    }
+
+    function getFilenameFromPath(path) {
+      return path.split('/').pop() || path;
+    }
+
+    function getDirectDownloadUrl(filePath) {
+      return `/assets/isos/${filePath}`;
+    }
+
+    function getTorrentDownloadUrl(filePath) {
+      return `/torrents/${filePath}.torrent`;
+    }
+
+    // Load ISO data and quick links when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchIsoData();
+      loadQuickLinks();
+    });
+  </script>
+</body>
+</html>

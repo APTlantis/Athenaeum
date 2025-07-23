@@ -1,0 +1,14 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['localhost'],
+    unoptimized: true,
+  },
+};
+
+// NOTE: This configuration is not used anymore as the project has been reverted to Vite
+// The original site was built with Vite + React + React Router
+// See vite.config.ts for the current configuration
+
+module.exports = nextConfig;
